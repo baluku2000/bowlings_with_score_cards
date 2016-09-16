@@ -159,14 +159,21 @@ $(document).ready(function(){
     }
   });
 
-  // compute array of 10 subarrays for 10 frames, where a subarray contains the no. of pins downed respectively for the 1st and 2nd throw of a frame ( or
-  // just the 1st throw if it is a strike.
   $('#form_for_new_bowlgame').on('submit', function(e){
     e.preventDefault();
     
-    if ( true ){
-      alert( 'Your bowling game has been submitted for evaluation of frame scores.\rTODO to revert with display of frame scores' );
-      // this.submit(); // REMEMBER TO RESTORE
+    var output_frames = '['; // all 10 frames
+    
+    for ( i = 0; i < 10; i++) { 
+      output_frames +=  $( '#cbx_pins_down_frame' + i).val() + ",";
     }
+    
+    // remove trailing comma and append closing "]" to obtain final output_frames
+    output_frames = output_frames.slice( 0, output_frames.length - 1) + "]";
+    
+    $( 'form#form_for_new_bowlgame #frames').val( output_frames);
+    // alert( $( 'form#form_for_new_bowlgame #frames').val());
+    
+    this.submit();
   });
 });
