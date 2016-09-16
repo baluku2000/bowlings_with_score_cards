@@ -165,7 +165,7 @@ $(document).ready(function(){
     e.preventDefault();
     
     if ( true ){
-      alert( 'Your bowling game has been submitted for evaluation of frame scores.\rTODO to revert with display of frame scores' ); // dbug
+      alert( 'Your bowling game has been submitted for evaluation of frame scores.\rTODO to revert with display of frame scores' );
       // this.submit(); // REMEMBER TO RESTORE
     }
   });

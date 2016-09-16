@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :bowlgames
+  get 'bowlgames/new' => 'bowlgames#new'
+  post 'bowlgames' => 'bowlgames#create'
   root to: 'bowlgames#new'
   
   # The priority is based upon order of creation: first created -> highest priority.

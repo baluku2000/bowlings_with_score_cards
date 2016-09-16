@@ -2,7 +2,7 @@
 <div class="container">
   <h2>New Bowling Game</h2>
   
-  <%= form_tag( bowlgames_path, method: "post", id: "form_for_new_bowlgame") do %>
+  <%= form_tag 'bowlgames', :method => :post, id: "form_for_new_bowlgame" do %>
     <div class="row">
       <% 10.times do |i| %>
         <%= render partial: 'new_frame', :locals => { :frame_number => i } %>
