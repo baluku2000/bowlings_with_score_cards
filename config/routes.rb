@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'bowlgames/new' => 'bowlgames#new'
+  # get 'bowlgames/new' => 'bowlgames#new'
   post 'bowlgames' => 'bowlgames#create'
   root to: 'bowlgames#new'
   

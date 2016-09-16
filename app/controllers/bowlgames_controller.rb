@@ -266,8 +266,8 @@ class BowlgamesController < ApplicationController
         throw1 = i[0]
         
         if throw1 == STRIKE
-          nxtframethrow1 = @input_frames[ index + 1][0]
-          nxtframethrow2 = @input_frames[ index + 1][1]
+          nxtframethrow1 = @input_frames[9][0] # @input_frames[9] is the last frame i.e. Frame Ten
+          nxtframethrow2 = @input_frames[9][1]
           
           score = STRIKE + nxtframethrow1 + nxtframethrow2
           
