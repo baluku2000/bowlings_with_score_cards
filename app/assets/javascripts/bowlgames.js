@@ -87,19 +87,20 @@ $(document).ready(function(){
         // we are dealing with throw1 select
         if ( $target.hasClass( 'select-throw1')){
           if ( $val_i == STRIKE ){
-            $( ".select-throw1").parent().find("[ data-frameno='" + ( $frameno_i + 1).toString() + "']").prop( 'disabled', false);
+            $( ".select-throw1").parent().find("[ data-frameno='" + ( $frameno_i + 1).toString() + "']").prop( 'disabled', false).focus();
             $( '#cbx_pins_down_frame' + $frameno_s).val( "[10]");
           }
           else {
             var $sel = $( ".select-throw2").parent().find("[ data-frameno='" + $frameno_s + "']").prop( 'disabled', false);
             $sel.filterByNumeric( STRIKE - $val_i);
+            $sel.focus();
           }
         }
         // endof we are dealing with throw1 select
         
         // we are dealing with throw2 select
         else if ( $target.hasClass( 'select-throw2')){
-          $( ".select-throw1").parent().find("[ data-frameno='" + ( $frameno_i + 1).toString() + "']").prop( 'disabled', false);
+          $( ".select-throw1").parent().find("[ data-frameno='" + ( $frameno_i + 1).toString() + "']").prop( 'disabled', false).focus();
           $( '#cbx_pins_down_frame' + $frameno_s).val( "[" + $( ".select-throw1").parent().find("[ data-frameno='" + $frameno_s + "']").val() + ", " + $val_s + "]");
         // endof we are dealing with throw1 select
         }
@@ -124,6 +125,7 @@ $(document).ready(function(){
           
           if ( $val_i < STRIKE ){
             $sel.filterByNumeric( STRIKE - $val_i);
+            $sel.focus();
           }
         }
         // endof we are dealing with throw1 select
