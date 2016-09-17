@@ -1,1 +1,13 @@
+git clone https://github.com/baluku2000/bowlings.git
+
+cd bowlings
+
 bundle install
+
+bundle exec rails s -b 0.0.0.0
+
+Open browser and visit http://127.0.0.1:3000 if browser and rails both running on same box
+
+or
+
+http://ip.of.rails.box:3000 if browser and rails running on different boxes
