@@ -1,2 +1,32 @@
-<p>Total scores at the end of each frame</p>
-<%= @output_framescores %>
+<style>
+  .vcenter {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    height: 50%;
+    width: 50%;
+  }
+</style>
+
+<div class="text-center vcenter">
+  <p>Input frames</p>
+  <%= @input_frames %>
+  
+  <% if defined? @output_framescores %>
+    <% unless @output_framescores.empty? %>
+        <br />
+        <br />
+        <br />
+        <p>Total scores at the end of each frame</p>
+        <%= @output_framescores %>
+    <% end %>
+  <% end %>
+
+  <% flash.each do |key, value| %>
+    <br />
+    <br />
+    <br />
+    Error
+    <div><%= value %></div>
+  <% end %>
+</div>

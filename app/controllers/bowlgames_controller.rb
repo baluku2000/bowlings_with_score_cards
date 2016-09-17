@@ -41,7 +41,7 @@ class BowlgamesController < ApplicationController
     def log_error_and_render msg
       logger.error( msg)
       flash.now[:alert] = msg
-      render 'new'
+      render 'create'
     end
 
     def has_only_numeric_elements in_array
@@ -75,14 +75,14 @@ class BowlgamesController < ApplicationController
       #   verify
       #     frame has either 1 integer entry ( [10] )
       #                   or 2 integer entries ( [x,y] where -1<x<10, -1<y<11, x+y < 11 )
-      @input_frames[0..8].each do |i|
+      @input_frames[0..8].each_with_index do |i, index|
         unless has_only_numeric_elements i
-          @errmsg = "Subarray must contain only integer entries"
+          @errmsg = "Subarray no. #{index + 1} must contain only integer entries"
           return false
         end
         
         unless is_nonempty_with_maxlen i, 2
-          @errmsg = "Subarray must not be empty and length must not exceed 2"
+          @errmsg = "Subarray no. #{index + 1} must not be empty and length must not exceed 2"
           return false
         end
         
@@ -90,7 +90,7 @@ class BowlgamesController < ApplicationController
         when 1
           # subarray with only one entry must have entry 10
           if i[0] != 10
-            @errmsg = "Subarray with only one entry must have value 10"
+            @errmsg = "Subarray no. #{index + 1} with single entry must have value 10"
             return false
           end
         
@@ -101,17 +101,17 @@ class BowlgamesController < ApplicationController
           throw2 = i[1]
           
           if ( throw1 <= -1) || ( throw1 >= 10)
-            @errmsg = "Invalid throw no. 1"
+            @errmsg = "Subarray no. #{index + 1} : Invalid throw no. 1"
             return false
           end
           
           if ( throw2 <= -1) || ( throw2 >= 11)
-            @errmsg = "Invalid throw no. 2"
+            @errmsg = "Subarray no. #{index + 1} : Invalid throw no. 2"
             return false
           end
           
           if ( throw1 + throw2 >= 11)
-            @errmsg = "Throws 1 and 2 together must not exceed 10 pins"
+            @errmsg = "Subarray no. #{index + 1} : Throws 1 and 2 together must not exceed 10 pins"
             return false
           end
           
