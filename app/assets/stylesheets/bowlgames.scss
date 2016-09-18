@@ -5,4 +5,39 @@
     margin-top: 5px;
     margin-bottom: 5px;
   }
+  
+  & .throwThree {
+    margin-bottom: 5px;
+  }
+}
+
+.nett_score_label_on_top {
+  margin: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #000;
+  color: #ffffff;
+}
+
+.nett_score_value_on_bottom {
+  margin: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #ffffff;
+  color: #000;
+  border: 2px solid black;
+}
+
+.nett_score_label_on_left {
+  padding-right: 0px;
+  background-color: #000;
+  color: #ffffff;
+  border: 2px solid #000;
+}
+
+.nett_score_value_on_right {
+  padding-left: 0px;
+  background-color: #ffffff;
+  color: #000;
+  border: 2px solid #000;
 }

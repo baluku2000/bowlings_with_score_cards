@@ -1,0 +1,10 @@
+$( '#alert-bar').html( "&nbsp; <%= flash[:alert] %>");
+
+<% if defined? @output_framescores %>
+  <% unless @output_framescores.empty? %>
+    <% @output_framescores.each_with_index do |i, index| %>
+      <%= cumulative_framescores_shown_on_bottom = "$( '#frame#{index}').find( '.nett_score_value_on_bottom span').html( '#{i}');".html_safe %>
+      <%= cumulative_framescores_shown_on_right = "$( '#frame#{index}').find( '.nett_score_value_on_right span').html( '#{i}');".html_safe %>
+    <% end %>
+  <% end %>
+<% end %>

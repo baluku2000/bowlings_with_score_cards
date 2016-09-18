@@ -1,43 +1,29 @@
       <% ten_pins_array = [ [ '--', ''], [ '0', '0'], [ '1', '1'], [ '2', '2'], [ '3', '3'], [ '4', '4'], [ '5', '5'], [ '6', '6'], [ '7', '7'], [ '8', '8'], [ '9', '9'], [ '10', '10']] %>
-      <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1" id="frame<%= "#{frame_number}" %>">
+      <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
         <fieldset class="input-group frame">
           <div class="row">
             <legend class="h5 text-center"><%= "Frame #{frame_number + 1}" %></legend>
             <div class="col-sm-12">
               <div class="form-group">
                 <%= select_tag( "select_pins_down[frame#{frame_number}][]", options_for_select( ten_pins_array, '--'), class: "form-control select-throw1", id: "pins_down_frame#{frame_number}_throw1", disabled: "disabled", "data-frameno" => "#{frame_number}") %>
+                <%#= check_box_tag 'pins_down[]', "[4,5]", true, id: "cbx_pins_down_frame#{frame_number}_throw1", class: "plshide" %>
               </div>
             </div>
             <div class="col-sm-12 throwTwo">
               <div class="form-group">
                 <%= select_tag( "select_pins_down[frame#{frame_number}][]", options_for_select( ten_pins_array, '--'), class: "form-control select-throw2", id: "pins_down_frame#{frame_number}_throw2", disabled: "disabled", "data-frameno" => "#{frame_number}") %>
+                <%#= check_box_tag 'pins_down[]', "[4,5]", true, id: "cbx_pins_down_frame#{frame_number}_throw2", class: "plshide" %>
               </div>
             </div>
             
             <% if frame_number == 9 %>
-              <div class="col-sm-12 throwThree">
+              <div class="col-sm-12">
                 <div class="form-group">
                   <%= select_tag( "select_pins_down[frame#{frame_number}][]", options_for_select( ten_pins_array, '--'), class: "form-control select-throw3", id: "pins_down_frame#{frame_number}_throw3", disabled: "disabled", "data-frameno" => "#{frame_number}") %>
+                  <%#= check_box_tag 'pins_down[]', "[4,5]", true, id: "cbx_pins_down_frame#{frame_number}_throw3", class: "plshide" %>
                 </div>
               </div>
             <% end %>
-            
-            
-            <div class="col-sm-12 text-center visible-xs visible-sm">
-              <div class="col-sm-6 nett_score_label_on_left">
-                <h4><strong>Nett Score</strong></h4>
-              </div>
-              <div class="col-sm-6 nett_score_value_on_right">
-                <h4><strong><span>&nbsp;</span></strong></h4>
-              </div>
-            </div>
-            
-            <div class="col-sm-12 text-center visible-md visible-lg">
-              <div class="form-group">
-                <h5 class="nett_score_label_on_top"><strong>Nett Score</strong></h5>
-                <h5 class="nett_score_value_on_bottom"><strong><span><p></p></span></strong></h5>
-              </div>
-            </div>
             
             <%= check_box_tag 'pins_down[]', "[4,5]", true, id: "cbx_pins_down_frame#{frame_number}", class: "hide" %>
             

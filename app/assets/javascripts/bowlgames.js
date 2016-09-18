@@ -159,8 +159,7 @@ $(document).ready(function(){
     }
   });
 
-  $('#form_for_new_bowlgame').on('submit', function(e){
-    e.preventDefault();
+  $('#form_for_new_bowlgame :submit').on('click', function(e){
     
     var output_frames = '['; // all 10 frames
     
@@ -173,7 +172,12 @@ $(document).ready(function(){
     
     $( 'form#form_for_new_bowlgame #frames').val( output_frames);
     // alert( $( 'form#form_for_new_bowlgame #frames').val());
-    
-    this.submit();
+
+    $( this).addClass( 'hide');
+    $( '#reset').removeClass( 'hide');
+  });
+  
+  $('#form_for_new_bowlgame #reset').on('click', function(e){
+    window.location.href = "/";
   });
 });

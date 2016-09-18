@@ -1,8 +1,12 @@
 <div id="content">
 <div class="container">
+  <div class="alert alert-alert text-center" id="alert-bar">
+    &nbsp;
+  </div>
+  
   <h2>New Bowling Game</h2>
   
-  <%= form_tag 'bowlgames', :method => :post, id: "form_for_new_bowlgame" do %>
+  <%= form_tag 'bowlgames', :method => :post, id: "form_for_new_bowlgame", remote: true do %>
     <div class="row">
       <% 10.times do |i| %>
         <%= render partial: 'new_frame', :locals => { :frame_number => i } %>
@@ -12,7 +16,8 @@
     <br />
     <div class="form-group">
       <%= submit_tag "Submit game", { class: "btn btn-primary disabled", disabled: "disabled"} %> &nbsp;
-      <!-- a class="btn btn-primary" id="reset">Reset</a -->
+      <!-- a class="btn btn-primary hide" id="reset", href='/'>Reset</a -->
+      <button class="btn btn-primary hide" id="reset">Reset</button>
     </div>
     
     <input type="hidden" name="frames" id="frames" value="">

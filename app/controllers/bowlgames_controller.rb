@@ -16,33 +16,41 @@ class BowlgamesController < ApplicationController
     @errmsg = ""
     
     unless validate_input_frames
-      log_error_and_render @errmsg and return
+    
+      logger.error( @errmsg)
+      flash.now[:alert] = @errmsg
+      
+      respond_to do |format|
+        format.html { }
+        format.js { open('/home/jerry/yyy.txt', 'w') { |f| f.puts @output_framescores } }
+      end
+      
+    else
+
+      @output_framescores = []
+      compute_cumulative_framescores
+      
+      respond_to do |format|
+        format.html { }
+        format.js { open('/home/jerry/zzz.txt', 'w') { |f| f.puts @output_framescores } }
+      end
+      
     end
-    
-    @output_framescores = []
-    
-    compute_cumulative_framescores
-    
-    # dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug
-    # if @errmsg != ""
-    #   log_error_and_render @errmsg and return
-    # end
-    # dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug dbug
-    
-    # Todo
-    # write some helper to enable create view to return html page that
-    # displays in user friendly terms both input/output frames and scores.
-    render 'create'
     
   end
 
   private
   
-    def log_error_and_render msg
-      logger.error( msg)
-      flash.now[:alert] = msg
-      render 'create'
-    end
+    # def log_error_and_render msg
+    #   logger.error( msg)
+    #   flash.now[:alert] = msg
+    #   # render 'create'
+    #  
+    #   respond_to do |format|
+    #     format.html { }
+    #     format.js { open('/home/jerry/yyy.txt', 'w') { |f| f.puts @output_framescores } }
+    #   end
+    # end
 
     def has_only_numeric_elements in_array
       in_array.each do |i|
