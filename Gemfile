@@ -46,4 +46,9 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'guard'
+  gem 'guard-minitest'
+end
+
 gem 'bootstrap-sass', '~> 3.3.6'

@@ -10,7 +10,8 @@ class BowlgamesController < ApplicationController
       @input_frames = JSON.parse params[:frames]
     rescue JSON::ParserError => e
       # e.g. [2,]
-      log_error_and_render "Invalid Input Frames" and return
+      log_error_and_render( "Invalid Input Frames #{params[:frames]}")
+      return
     end
     
     @errmsg = ""
@@ -41,16 +42,16 @@ class BowlgamesController < ApplicationController
 
   private
   
-    # def log_error_and_render msg
-    #   logger.error( msg)
-    #   flash.now[:alert] = msg
-    #   # render 'create'
-    #  
-    #   respond_to do |format|
-    #     format.html { }
-    #     format.js { open('/home/jerry/yyy.txt', 'w') { |f| f.puts @output_framescores } }
-    #   end
-    # end
+    def log_error_and_render msg
+      logger.error( msg)
+      flash.now[:alert] = msg
+      # render 'create'
+    
+      respond_to do |format|
+        format.html { }
+        format.js { open('/home/jerry/xxx.txt', 'w') { |f| f.puts msg } }
+      end
+    end
 
     def has_only_numeric_elements in_array
       in_array.each do |i|

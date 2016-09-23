@@ -1,0 +1,23 @@
+git clone https://github.com/baluku2000/bowlings_with_score_cards.git
+
+cd bowlings_with_score_cards
+
+git branch -f frames_ajax_post origin/frames_ajax_post
+
+git checkout frames_ajax_post
+
+bundle install
+
+bundle exec rails s -b 0.0.0.0
+
+Open browser and visit http://127.0.0.1:3000 if browser and rails both running on same box
+
+or
+
+http://ip.of.rails.box:3000 if browser and rails running on different boxes
+
+---------------------- 
+
+To update local branch with latest, run
+
+git pull --rebase origin frames_ajax_post
